@@ -169,9 +169,6 @@ class ViewController: UIViewController {
     
     
     @objc func hideText(_ sender: UIButton) {
-        //        if sender.tag == 0 {
-        //            passwordTF.isSecureTextEntry = !passwordTF.isSecureTextEntry
-        //        }
         
         switch sender.tag {
         case 0:
