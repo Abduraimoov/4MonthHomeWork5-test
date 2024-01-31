@@ -143,9 +143,7 @@ class ThirdViewController: UIViewController,  UITableViewDataSource, UITableView
       Contact(image: "mbappe", text: "Kilian Mbappe \n is the best player", secondText: "0 ballon dor's", secondImage: "", image3: "third"),
       Contact(image: "salah", text: "Mohammed Salah \n is the perfect player", secondText: "0 ballon dor's", secondImage: "", image3: "third")
       ]
-        
         myTableView.reloadData()
-
     }
     
     
@@ -157,21 +155,16 @@ class ThirdViewController: UIViewController,  UITableViewDataSource, UITableView
         guard indexPath.row < Contacts.count else {
             return UITableViewCell()
         }
-
         let contact = Contacts[indexPath.row]
 
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! CustomTableViewCell
         cell.configure(with: contact)
-        
-
         return cell
     }
     
-    @objc func secondTapped(_ sender :UIButton) {
-        
+    @objc func secondTapped(_ sender :UIButton) {        
         let vc = SecondViewController()
         navigationController?.pushViewController(vc, animated: true)
     }
-
     
 }

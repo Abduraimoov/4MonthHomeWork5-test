@@ -96,8 +96,7 @@ class CustomTableViewCell: UITableViewCell {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-
-
+    
     func configure(with contact: Contact) {
         nameLabel.text = contact.text
         timeLabel.text = contact.secondText
@@ -105,4 +104,5 @@ class CustomTableViewCell: UITableViewCell {
         secondImageView.image = UIImage(named: contact.secondImage)
         image3.image = UIImage(named: contact.image3)
     }
+    
 }

@@ -88,8 +88,7 @@ class SecondViewController: UIViewController, UITableViewDataSource, UITableView
         view.addSubview(myStackblack)
         myStackblack.addArrangedSubview(mySystembt)
         myStackblack.addArrangedSubview(myTenchLbBack)
-        
-        
+                
         NSLayoutConstraint.activate([
             myNotLbl.topAnchor.constraint(equalTo: view.topAnchor, constant: 60),
             myNotLbl.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -25),
@@ -131,7 +130,6 @@ class SecondViewController: UIViewController, UITableViewDataSource, UITableView
             myTableView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -20),
         ])
     }
-
     
     private func setupData() {
         Contacts = [
@@ -143,9 +141,7 @@ class SecondViewController: UIViewController, UITableViewDataSource, UITableView
       Contact(image: "Name5", text: "Aileen has commented on your recipe", secondText: "4 days ago | 14:27 PM", secondImage: "Image5", image3: "third"),
       Contact(image: "Name6", text: "George has commented on your recipe", secondText: "5 days ago | 09:20 AM", secondImage: "Image6", image3: "third")
       ]
-        
         myTableView.reloadData()
-
     }
     
     
@@ -162,13 +158,10 @@ class SecondViewController: UIViewController, UITableViewDataSource, UITableView
 
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! CustomTableViewCell
         cell.configure(with: contact)
-        
-
         return cell
     }
     
     @objc func thirdTapped(_ sender: UIButton) {
-        
         let vc = ThirdViewController()
         navigationController?.pushViewController(vc, animated: true)
     }

@@ -164,9 +164,7 @@ class ViewController: UIViewController {
             mycontinue.heightAnchor.constraint(equalToConstant: 45)
         ])
         mycontinue.addTarget(self, action: #selector(performSegueIfEnabled), for: .touchUpInside)
-
     }
-    
     
     @objc func hideText(_ sender: UIButton) {
         
@@ -178,7 +176,6 @@ class ViewController: UIViewController {
         default:
             break
         }
-        
     }
     
     @objc func enabledButton(_ sender: UITextField) {
@@ -199,8 +196,6 @@ class ViewController: UIViewController {
             navigationController?.pushViewController(vc, animated: true)
         }
     }
-    
-
 
 }
 
