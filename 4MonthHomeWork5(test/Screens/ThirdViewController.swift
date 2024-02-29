@@ -16,13 +16,6 @@ class ThirdViewController: UIViewController,  UITableViewDataSource, UITableView
                                                                     textSize: 24,
                                                                     ofSize: .bold)
     
-    private lazy var mySetting: UIImageView = {
-        let Img = UIImageView()
-        Img.image = UIImage(named: "Setting")
-        Img.translatesAutoresizingMaskIntoConstraints = false
-        return Img
-    }()
-    
     private lazy var myStacklBl: UIStackView = {
         let msl = UIStackView()
         msl.axis = .vertical
@@ -67,8 +60,15 @@ class ThirdViewController: UIViewController,  UITableViewDataSource, UITableView
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
         setupUI()
+        let rightBarButtonTapped = UIBarButtonItem(image: UIImage(systemName: "gear"), style: .plain, target: self, action: #selector(navBarButonItem))
+        navigationItem.rightBarButtonItem = rightBarButtonTapped
+        self.navigationController?.navigationBar.tintColor = UIColor.black
+        
+        let backButtonImage = UIImage(systemName: "chevron.left")
+        let backButton = UIBarButtonItem(image: backButtonImage, style: .plain, target: self, action: #selector(backButtonTapped))
+        navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
+        navigationItem.leftBarButtonItem = backButton
     }
     
     private func setupUI() {
@@ -80,7 +80,6 @@ class ThirdViewController: UIViewController,  UITableViewDataSource, UITableView
     
     private func upperPardScreen() {
         view.addSubview(myNotLbl)
-        view.addSubview(mySetting)
         view.addSubview(myStacklBl)
         myStacklBl.addArrangedSubview(myGeneralBt)
         myStacklBl.addArrangedSubview(myTenchLb)
@@ -97,13 +96,6 @@ class ThirdViewController: UIViewController,  UITableViewDataSource, UITableView
         ])
         
         NSLayoutConstraint.activate([
-            mySetting.topAnchor.constraint(equalTo: view.topAnchor, constant: 62),
-            mySetting.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16),
-            mySetting.heightAnchor.constraint(equalToConstant: 25),
-            mySetting.widthAnchor.constraint(equalToConstant: 25)
-        ])
-        
-        NSLayoutConstraint.activate([
             myStacklBl.topAnchor.constraint(equalTo: myNotLbl.bottomAnchor, constant: 20),
             myStacklBl.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16),
             myStacklBl.heightAnchor.constraint(equalToConstant: 35),
@@ -111,7 +103,7 @@ class ThirdViewController: UIViewController,  UITableViewDataSource, UITableView
         ])
         
         NSLayoutConstraint.activate([
-            myStackblack.topAnchor.constraint(equalTo: mySetting.bottomAnchor, constant: 26),
+            myStackblack.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 15.2),
             myStackblack.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16),
             myStackblack.heightAnchor.constraint(equalToConstant: 35),
             myStackblack.widthAnchor.constraint(equalToConstant: 182)
@@ -120,7 +112,6 @@ class ThirdViewController: UIViewController,  UITableViewDataSource, UITableView
     
     private func setupTableView() {
         view.addSubview(myTableView)
-       // myTableView.register(CustomTableViewCell.self, forCellReuseIdentifier: "cell")
         myTableView.register(CustomTableViewCell.self, forCellReuseIdentifier: "cell")
         myTableView.dataSource = self
         NSLayoutConstraint.activate([
@@ -165,6 +156,21 @@ class ThirdViewController: UIViewController,  UITableViewDataSource, UITableView
     @objc func secondTapped(_ sender :UIButton) {        
         let vc = SecondViewController()
         navigationController?.pushViewController(vc, animated: true)
+    }
+    
+    @objc func navBarButonItem() {
+        let vc = SettingViewController()
+        navigationController?.pushViewController(vc, animated: true)
+    }
+    
+    @objc func backButtonTapped() {
+        for controller in navigationController?.viewControllers ?? [] {
+            if let ViewController = controller as? ViewController {
+                navigationController?.popToViewController(ViewController, animated: true)
+                break
+            }
+        }
+        
     }
     
 }

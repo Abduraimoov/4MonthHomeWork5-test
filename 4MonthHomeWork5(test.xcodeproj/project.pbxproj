@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8596CD512B90C3E2004154DC /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8596CD502B90C3E2004154DC /* SettingViewController.swift */; };
+		8596CD532B90CDA6004154DC /* SecondSettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8596CD522B90CDA6004154DC /* SecondSettingViewController.swift */; };
 		8597228F2B63F91400A08FDD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8597228E2B63F91400A08FDD /* AppDelegate.swift */; };
 		859722912B63F91400A08FDD /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 859722902B63F91400A08FDD /* SceneDelegate.swift */; };
 		859722932B63F91400A08FDD /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 859722922B63F91400A08FDD /* ViewController.swift */; };
@@ -20,6 +22,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		8596CD502B90C3E2004154DC /* SettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
+		8596CD522B90CDA6004154DC /* SecondSettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondSettingViewController.swift; sourceTree = "<group>"; };
 		8597228B2B63F91400A08FDD /* 4MonthHomeWork5(test.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "4MonthHomeWork5(test.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		8597228E2B63F91400A08FDD /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		859722902B63F91400A08FDD /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -89,6 +93,8 @@
 				859722922B63F91400A08FDD /* ViewController.swift */,
 				859722AA2B63FA3500A08FDD /* SecondViewController.swift */,
 				859722B12B65414800A08FDD /* ThirdViewController.swift */,
+				8596CD502B90C3E2004154DC /* SettingViewController.swift */,
+				8596CD522B90CDA6004154DC /* SecondSettingViewController.swift */,
 			);
 			path = Screens;
 			sourceTree = "<group>";
@@ -194,6 +200,8 @@
 				859722A72B63F9E700A08FDD /* MakerView.swift in Sources */,
 				859722AF2B64570500A08FDD /* CustomTableViewCell.swift in Sources */,
 				8597228F2B63F91400A08FDD /* AppDelegate.swift in Sources */,
+				8596CD532B90CDA6004154DC /* SecondSettingViewController.swift in Sources */,
+				8596CD512B90C3E2004154DC /* SettingViewController.swift in Sources */,
 				859722912B63F91400A08FDD /* SceneDelegate.swift in Sources */,
 				859722B22B65414800A08FDD /* ThirdViewController.swift in Sources */,
 				859722A92B63FA0700A08FDD /* Contacts.swift in Sources */,

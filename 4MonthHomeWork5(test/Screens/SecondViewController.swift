@@ -8,21 +8,14 @@
 import UIKit
 
 class SecondViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
-
+    
     var Contacts: [Contact] = []
     private let cellID = "cell"
-
+    
     
     private lazy var myNotLbl: UILabel = MakerView.sharedLB.makeLbl(text: "Notification",
                                                                     textSize: 24,
                                                                     ofSize: .bold)
-    
-    private lazy var mySetting: UIImageView = {
-        let Img = UIImageView()
-        Img.image = UIImage(named: "Setting")
-        Img.translatesAutoresizingMaskIntoConstraints = false
-        return Img
-    }()
     
     private lazy var myStacklBl: UIStackView = {
         let msl = UIStackView()
@@ -52,24 +45,32 @@ class SecondViewController: UIViewController, UITableViewDataSource, UITableView
     }()
     
     private lazy var mySystembt: UIButton = MakerView().makeBTN(title: "System",
-                                                                 for: .normal,
-                                                                 colorBT: .black)
+                                                                for: .normal,
+                                                                colorBT: .black)
     
     private lazy var myTenchLbBack: UILabel = MakerView.sharedLB.makeLbl(text: "_____________________________",
-                                                                     textColor: .black,
-                                                                     textSize: 10,
-                                                                     ofSize: .bold)
-      
+                                                                         textColor: .black,
+                                                                         textSize: 10,
+                                                                         ofSize: .bold)
+    
     private let myTableView: UITableView = {
-    let tableView = UITableView()
-          tableView.translatesAutoresizingMaskIntoConstraints = false
-          return tableView
-       }()
+        let tableView = UITableView()
+        tableView.translatesAutoresizingMaskIntoConstraints = false
+        return tableView
+    }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
         setupUI()
+        let rightBarButtonTapped = UIBarButtonItem(image: UIImage(systemName: "gear"), style: .plain, target: self, action: #selector(navBarButonItem))
+        navigationItem.rightBarButtonItem = rightBarButtonTapped
+        self.navigationController?.navigationBar.tintColor = UIColor.black
+        
+        
+        let backButtonImage = UIImage(systemName: "chevron.left")
+        let backButton = UIBarButtonItem(image: backButtonImage, style: .plain, target: self, action: #selector(backButtonTapped))
+        navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
+        navigationItem.leftBarButtonItem = backButton
     }
     
     private func setupUI() {
@@ -81,26 +82,18 @@ class SecondViewController: UIViewController, UITableViewDataSource, UITableView
     
     private func upperPardScreen() {
         view.addSubview(myNotLbl)
-        view.addSubview(mySetting)
         view.addSubview(myStacklBl)
         myStacklBl.addArrangedSubview(myGeneralBt)
         myStacklBl.addArrangedSubview(myTenchLb)
         view.addSubview(myStackblack)
         myStackblack.addArrangedSubview(mySystembt)
         myStackblack.addArrangedSubview(myTenchLbBack)
-                
+        
         NSLayoutConstraint.activate([
             myNotLbl.topAnchor.constraint(equalTo: view.topAnchor, constant: 60),
             myNotLbl.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -25),
             myNotLbl.heightAnchor.constraint(equalToConstant: 34),
             myNotLbl.widthAnchor.constraint(equalToConstant: 294)
-        ])
-        
-        NSLayoutConstraint.activate([
-            mySetting.topAnchor.constraint(equalTo: view.topAnchor, constant: 62),
-            mySetting.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16),
-            mySetting.heightAnchor.constraint(equalToConstant: 25),
-            mySetting.widthAnchor.constraint(equalToConstant: 25)
         ])
         
         NSLayoutConstraint.activate([
@@ -111,7 +104,7 @@ class SecondViewController: UIViewController, UITableViewDataSource, UITableView
         ])
         
         NSLayoutConstraint.activate([
-            myStackblack.topAnchor.constraint(equalTo: mySetting.bottomAnchor, constant: 26),
+            myStackblack.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 15.2),
             myStackblack.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16),
             myStackblack.heightAnchor.constraint(equalToConstant: 35),
             myStackblack.widthAnchor.constraint(equalToConstant: 182)
@@ -134,13 +127,13 @@ class SecondViewController: UIViewController, UITableViewDataSource, UITableView
     private func setupData() {
         Contacts = [
             Contact(image: "Name0", text: "Jane Cooper has published a new recipe!", secondText: "Today | 09:24 AM", secondImage: "Image0", image3: "third"),
-      Contact(image: "Name1", text: "Rochel has commented on your recipe", secondText: "1 day ago | 14:43 PM", secondImage: "Image1", image3: "third"),
-      Contact(image: "Name2", text: "Brad Wigington liked your comment", secondText: "1 day ago | 09:29 AM", secondImage: "Image2", image3: "third"),
-      Contact(image: "Name3", text: "Tyra Ballentine has published a new recipe!", secondText: "2 days ago | 10:29 AM", secondImage: "Image3", image3: "third"),
-      Contact(image: "Name4", text: "Marci Winkles has published a new recipe!", secondText: "3 days ago | 16:52 PM", secondImage: "Image4", image3: "third"),
-      Contact(image: "Name5", text: "Aileen has commented on your recipe", secondText: "4 days ago | 14:27 PM", secondImage: "Image5", image3: "third"),
-      Contact(image: "Name6", text: "George has commented on your recipe", secondText: "5 days ago | 09:20 AM", secondImage: "Image6", image3: "third")
-      ]
+            Contact(image: "Name1", text: "Rochel has commented on your recipe", secondText: "1 day ago | 14:43 PM", secondImage: "Image1", image3: "third"),
+            Contact(image: "Name2", text: "Brad Wigington liked your comment", secondText: "1 day ago | 09:29 AM", secondImage: "Image2", image3: "third"),
+            Contact(image: "Name3", text: "Tyra Ballentine has published a new recipe!", secondText: "2 days ago | 10:29 AM", secondImage: "Image3", image3: "third"),
+            Contact(image: "Name4", text: "Marci Winkles has published a new recipe!", secondText: "3 days ago | 16:52 PM", secondImage: "Image4", image3: "third"),
+            Contact(image: "Name5", text: "Aileen has commented on your recipe", secondText: "4 days ago | 14:27 PM", secondImage: "Image5", image3: "third"),
+            Contact(image: "Name6", text: "George has commented on your recipe", secondText: "5 days ago | 09:20 AM", secondImage: "Image6", image3: "third")
+        ]
         myTableView.reloadData()
     }
     
@@ -153,9 +146,9 @@ class SecondViewController: UIViewController, UITableViewDataSource, UITableView
         guard indexPath.row < Contacts.count else {
             return UITableViewCell()
         }
-
+        
         let contact = Contacts[indexPath.row]
-
+        
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! CustomTableViewCell
         cell.configure(with: contact)
         return cell
@@ -165,6 +158,19 @@ class SecondViewController: UIViewController, UITableViewDataSource, UITableView
         let vc = ThirdViewController()
         navigationController?.pushViewController(vc, animated: true)
     }
-
     
+    @objc func navBarButonItem() {
+        let vc = SettingViewController()
+        navigationController?.pushViewController(vc, animated: true)
+    }
+    
+    @objc func backButtonTapped() {
+        for controller in navigationController?.viewControllers ?? [] {
+            if let ViewController = controller as? ViewController {
+                navigationController?.popToViewController(ViewController, animated: true)
+                break
+            }
+        }
+        
+    }
 }
